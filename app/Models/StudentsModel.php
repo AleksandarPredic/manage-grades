@@ -44,16 +44,15 @@ final class StudentsModel extends AcademicAbstract implements AcademicGradesInte
             }
 
             $this->name = $result['name'];
-            $this->board_id = intval($result['board_id']);
+            $this->boardId = intval($result['board_id']);
             $this->setGrades();
             $this->exists = true;
-            var_dump($result);
+            $this->setBoardName();
 
             return true;
 
         } catch (PDOException $e) {
             var_dump($e->getMessage());
-
             // TODO: Handle exception or log it
             return false;
         }
@@ -81,5 +80,23 @@ final class StudentsModel extends AcademicAbstract implements AcademicGradesInte
         $this->grades = $conn->fetchAll();
     }
 
+    /**
+     * Set Board name property
+     */
+    private function setBoardName() {
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = $this->db->prepare(
+            'SELECT name
+                        FROM boards
+                        WHERE id = ' . $this->boardId
+        );
 
+        $conn->execute();
+
+        // set the resulting array to associative
+        $conn->setFetchMode(PDO::FETCH_ASSOC);
+
+        $result = $conn->fetch();
+        $this->boardName = $result['name'];
+    }
 }

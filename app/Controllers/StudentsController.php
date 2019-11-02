@@ -5,6 +5,7 @@ namespace PredicMVC\Controllers;
 
 
 use PredicMVC\Contracts\Controllers\RouteControllerInterface;
+use PredicMVC\Factories\SchoolBoardFactory;
 use PredicMVC\Libs\Controller;
 use PredicMVC\UseCases\Calculator;
 use PredicMVC\UseCases\CalculatorAverage;
@@ -37,6 +38,11 @@ class StudentsController extends Controller implements RouteControllerInterface
     public function index($param1 = null, $param2 = null)
     {
 
+        /**
+         * TODO: move the migration elsewhere if I have some time left
+         * $seeder = new AppMigration();
+         * var_dump($seeder->createTables());*/
+
         if (empty($param1)) {
             $this->redirect('', 'Please provide student id');
         }
@@ -48,18 +54,25 @@ class StudentsController extends Controller implements RouteControllerInterface
         }
 
         var_dump($this->model);
+        $grades = $this->model->getGrades();
 
         $calculator = new Calculator(new CalculatorAverage());
-        $average = $calculator->calculate($this->model->getGrades());
+        $average = $calculator->calculate($grades);
         var_dump($average);
 
-        /**
-         * TODO: move the migration elsewhere if I have some time left
-         * $seeder = new AppMigration();
-         * var_dump($seeder->createTables());*/
+        $schoolBoard = SchoolBoardFactory::make($this->model->getBoardName());
+
+        if ($schoolBoard === null) {
+            $this->redirect('', 'Student does not have School Board assigned');
+        }
+
+        $verdict = $schoolBoard->verdict($average, $grades);
+        var_dump($verdict);
+
+
 
         /* TODO: features
-        - calculate average
+        - Compare results
         - Format result json or xml
         - output
         */
