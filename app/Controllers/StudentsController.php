@@ -6,6 +6,8 @@ namespace PredicMVC\Controllers;
 
 use PredicMVC\Contracts\Controllers\RouteControllerInterface;
 use PredicMVC\Libs\Controller;
+use PredicMVC\UseCases\Calculator;
+use PredicMVC\UseCases\CalculatorAverage;
 
 /**
  * Class StudentsController
@@ -14,6 +16,7 @@ use PredicMVC\Libs\Controller;
  */
 class StudentsController extends Controller implements RouteControllerInterface
 {
+
     /**
      * HomeControllerInterface constructor.
      *
@@ -33,6 +36,10 @@ class StudentsController extends Controller implements RouteControllerInterface
      */
     public function index($param1 = null, $param2 = null)
     {
+
+        if (empty($param1)) {
+            $this->redirect('', 'Please provide student id');
+        }
         $this->model->setId(intval($param1));
         $this->model->loadData();
 
@@ -42,13 +49,16 @@ class StudentsController extends Controller implements RouteControllerInterface
 
         var_dump($this->model);
 
+        $calculator = new Calculator(new CalculatorAverage());
+        $average = $calculator->calculate($this->model->getGrades());
+        var_dump($average);
+
         /**
          * TODO: move the migration elsewhere if I have some time left
          * $seeder = new AppMigration();
-        var_dump($seeder->createTables());*/
+         * var_dump($seeder->createTables());*/
 
         /* TODO: features
-        - get student object
         - calculate average
         - Format result json or xml
         - output

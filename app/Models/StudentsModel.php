@@ -9,12 +9,19 @@ use \PDOException;
 use PredicMVC\Abstracts\Models\AcademicAbstract;
 use PredicMVC\Contracts\Models\AcademicGradesInterface;
 
-final class StudentsModel extends AcademicAbstract implements  AcademicGradesInterface
+/**
+ * Class StudentsModel
+ *
+ * @package PredicMVC\Models
+ */
+final class StudentsModel extends AcademicAbstract implements AcademicGradesInterface
 {
+
     /**
      * Set the object values
      */
-    public function loadData(): bool {
+    public function loadData(): bool
+    {
         try {
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn = $this->db->prepare(
@@ -32,6 +39,7 @@ final class StudentsModel extends AcademicAbstract implements  AcademicGradesInt
 
             if ($result === false) {
                 $this->exists = false;
+
                 return false;
             }
 
@@ -40,11 +48,12 @@ final class StudentsModel extends AcademicAbstract implements  AcademicGradesInt
             $this->setGrades();
             $this->exists = true;
             var_dump($result);
-            return  true;
 
-        }
-        catch(PDOException $e) {
+            return true;
+
+        } catch (PDOException $e) {
             var_dump($e->getMessage());
+
             // TODO: Handle exception or log it
             return false;
         }
@@ -52,6 +61,7 @@ final class StudentsModel extends AcademicAbstract implements  AcademicGradesInt
 
     /**
      * Set grades property
+     *
      * @throws PDOException
      */
     private function setGrades(): void
@@ -70,5 +80,6 @@ final class StudentsModel extends AcademicAbstract implements  AcademicGradesInt
 
         $this->grades = $conn->fetchAll();
     }
+
 
 }
