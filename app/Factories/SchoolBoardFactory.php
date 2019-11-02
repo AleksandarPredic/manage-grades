@@ -4,6 +4,8 @@
 namespace PredicMVC\Factories;
 
 
+use PredicMVC\UseCases\FormaterXML;
+use PredicMVC\UseCases\FormatterJson;
 use PredicMVC\UseCases\SchoolBoardCMS;
 use PredicMVC\UseCases\SchoolBoardCMSB;
 
@@ -23,11 +25,11 @@ class SchoolBoardFactory
     {
         switch (strtolower($schoolBoardName)) {
             case 'csm':
-                return new SchoolBoardCMS();
+                return new SchoolBoardCMS(new FormatterJson());
                 break;
 
             case 'csmb':
-                return new SchoolBoardCMSB();
+                return new SchoolBoardCMSB(new FormaterXML());
                 break;
 
             default:

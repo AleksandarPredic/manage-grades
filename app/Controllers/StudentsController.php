@@ -37,15 +37,12 @@ class StudentsController extends Controller implements RouteControllerInterface
      */
     public function index($param1 = null, $param2 = null)
     {
-
-        /**
-         * TODO: move the migration elsewhere if I have some time left
-         * $seeder = new AppMigration();
-         * var_dump($seeder->createTables());*/
-
+        // Check param
         if (empty($param1)) {
             $this->redirect('', 'Please provide student id');
         }
+
+        // Set Student object
         $this->model->setId(intval($param1));
         $this->model->loadData();
 
@@ -53,13 +50,13 @@ class StudentsController extends Controller implements RouteControllerInterface
             $this->redirect('', 'Student does not exists in our records');
         }
 
-        var_dump($this->model);
         $grades = $this->model->getGrades();
 
+        // Calculate average
         $calculator = new Calculator(new CalculatorAverage());
         $average = $calculator->calculate($grades);
-        var_dump($average);
 
+        // Get verdict
         $schoolBoard = SchoolBoardFactory::make($this->model->getBoardName());
 
         if ($schoolBoard === null) {
@@ -67,14 +64,8 @@ class StudentsController extends Controller implements RouteControllerInterface
         }
 
         $verdict = $schoolBoard->verdict($average, $grades);
-        var_dump($verdict);
 
-
-
-        /* TODO: features
-        - Compare results
-        - Format result json or xml
-        - output
-        */
+        // Output
+        $schoolBoard->output($this->model, $average, $verdict);
     }
 }

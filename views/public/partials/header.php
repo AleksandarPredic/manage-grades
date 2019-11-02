@@ -22,7 +22,7 @@
             <header class="mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
                 <div class="mdl-layout__header-row">
 
-                    <h4 class="mdl-layout-title">Simple MVC framework<span> - use "The Force" to create something powerful!</span></h4>
+                    <h4 class="mdl-layout-title">Simple custom MVC framework<span> - use "The Force" to create something powerful!</span></h4>
                     <div class="mdl-layout-spacer"></div>
 
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">

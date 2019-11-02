@@ -13,7 +13,6 @@ Requirements:
 
 ## Table of contents
 
-* [Demo](#demo)
 * [Description](#description)
 * [Features](#features)
 * [Installation](#installation)
@@ -21,10 +20,6 @@ Requirements:
 * [Chengelog](#chengelog)
 * [Developers](#developers)
 * [Author information](#author-information)
-
-## Demo
-
-Please visit [TODO demo](http://#)
 
 
 ## Description
@@ -47,6 +42,7 @@ App is built using custom written MVC framework, PHP and MySQL.
 * Run gulp -- for dev environment only 
 * Edit .htaccess RewriteBase -- if needed
 * Copy and rename .env.example to .env and edit data
+* Import Database. It is located in the project root
 * Run web app
 
 ## Licence
@@ -59,11 +55,6 @@ App is built using custom written MVC framework, PHP and MySQL.
 
 #### 1.0.0 (2nd November 2019)
 * Official release
-
-
-## Developers
-
-Miss a feature? Pull requests are welcome.
 
 
 ## Author information

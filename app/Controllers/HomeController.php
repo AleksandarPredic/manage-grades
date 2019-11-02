@@ -32,8 +32,11 @@ class HomeController extends Controller implements RouteControllerInterface
      */
     public function index($param1 = null, $param2 = null)
     {
-        $this->view->title = $this->model->getTitle();
-        $this->view->subtitle = $this->model->getSubtitle();
+        /**
+         * TODO: move the migration elsewhere if I have some time left
+         * $seeder = new AppMigration();
+         * var_dump($seeder->createTables());*/
+
         $this->view->render('home/index.php');
     }
 
