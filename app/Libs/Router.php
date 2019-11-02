@@ -33,7 +33,8 @@ class Router
 
         $controller = ! empty($url[0]) ? $url[0] : 'Home';
         $function = 'index';
-        $parameter1 = ! empty($url[1]) ? $url[1] : '';
+        $parameter1 = ! empty($url[1]) ? $url[1] : null;
+        $parameter2 = ! empty($url[2]) ? $url[2] : null;
 
         $controllerName = '\PredicMVC\Controllers\\' . ucfirst($controller) . 'Controller';
 
@@ -48,7 +49,7 @@ class Router
                 $this->error404();
             }
             if (! empty($parameter1)) {
-                $controller->{$function}($parameter1);
+                $controller->{$function}($parameter1, $parameter2);
             } else {
                 $controller->{$function}();
             }

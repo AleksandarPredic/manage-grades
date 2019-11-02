@@ -2,7 +2,7 @@
 
 namespace PredicMVC\Controllers;
 
-use PredicMVC\Contracts\RouteControllerInterface;
+use PredicMVC\Contracts\Controllers\RouteControllerInterface;
 use PredicMVC\Libs\Controller;
 
 /**
@@ -26,10 +26,11 @@ class HomeController extends Controller implements RouteControllerInterface
     /**
      * Default controller method
      *
-     * @param null $param
-     * @return void
+     * @param null $param1
+     * @param null $param2
+     * @return mixed
      */
-    public function index($param = null): void
+    public function index($param1 = null, $param2 = null)
     {
         $this->view->title = $this->model->getTitle();
         $this->view->subtitle = $this->model->getSubtitle();

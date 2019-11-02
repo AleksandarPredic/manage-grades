@@ -1,7 +1,7 @@
 <?php
 
 
-namespace PredicMVC\Contracts;
+namespace PredicMVC\Contracts\Views;
 
 /**
  * Interface View

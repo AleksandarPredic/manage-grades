@@ -2,7 +2,7 @@
 
 namespace PredicMVC\Libs;
 
-use PredicMVC\Contracts\ViewInterface;
+use PredicMVC\Contracts\Views\ViewInterface;
 
 /**
  * Class View - Responsible for rendering app templates
