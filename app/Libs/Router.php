@@ -32,8 +32,8 @@ class Router
         $url = explode('/', $url[0]);
 
         $controller = ! empty($url[0]) ? $url[0] : 'Home';
-        $function = ! empty($url[1]) ? $url[1] : '';
-        $parameter1 = ! empty($url[2]) ? $url[2] : '';
+        $function = 'index';
+        $parameter1 = ! empty($url[1]) ? $url[1] : '';
 
         $controllerName = '\PredicMVC\Controllers\\' . ucfirst($controller) . 'Controller';
 
