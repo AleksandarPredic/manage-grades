@@ -42,6 +42,13 @@ class AcademicAbstract extends Model
     protected $boardId;
 
     /**
+     * Board name
+     *
+     * @var string
+     */
+    protected $boardName;
+
+    /**
      * If academic exists in DB
      *
      * @var bool
@@ -76,6 +83,14 @@ class AcademicAbstract extends Model
     public function getBoardId(): int
     {
         return $this->boardId;
+    }
+
+    /**
+     * Return Board name
+     * @return string
+     */
+    public function getBoardName(): string {
+        return $this->boardName;
     }
 
     /**
