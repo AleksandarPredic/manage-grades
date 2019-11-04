@@ -1,10 +1,8 @@
-# Simple MVC framework
+# Student grade management system
 
-This is custom app using MVC pattern using PHP and MySQL.
+A system that is responsible for the managing the grades for a list of students. 
 
-***PLEASE NOTE:*** Some description
-
-Requirements: 
+#### Requirements: 
 * php: >=7.2.0
 * nginx or apache server
 * mod_rewrite
@@ -14,7 +12,6 @@ Requirements:
 ## Table of contents
 
 * [Description](#description)
-* [Features](#features)
 * [Installation](#installation)
 * [Licence](#licence)
 * [Chengelog](#chengelog)
@@ -24,19 +21,15 @@ Requirements:
 
 ## Description
 
-Some description;
+System should be able to calculate the average of the grades for a given student,
+identify if he has passed or failed and return the student’s statistic.
 
 App is built using custom written MVC framework, PHP and MySQL.
 
 
-## Features
-
-* Some feature
-
-
 ## Installation
 
-* Clone the repo: git clone https://github.com/AleksandarPredic/setrepo.git
+* Clone the repo: git clone https://github.com/AleksandarPredic/manage-grades
 * Run composer install
 * Run npm install -- for dev environment only
 * Run gulp -- for dev environment only 
