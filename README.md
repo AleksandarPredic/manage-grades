@@ -1,6 +1,8 @@
 # Student grade management system
 
-A system that is responsible for the managing the grades for a list of students. 
+## Important: This task was a part of test assignment in application process in an IT company. Total time allowed for this task was 5 hours and this is the result :) 
+
+Students grades management system. 
 
 #### Requirements: 
 * php: >=7.2.0
