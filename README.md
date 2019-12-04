@@ -1,6 +1,6 @@
-# Student grade management system
+# Students grades management system
 
-## Important: This task was a part of test assignment in application process in an IT company. Total time allowed for this task was 5 hours and this is the result :) 
+## Important: This task was a part of a test assignment in the application process for an IT company. The total time allowed for this task was 5 hours and this is the result :)
 
 Students grades management system. 
 
